@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnTube - Choose Role</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to LearnTube</h1>
+    <p class="subtitle">Choose your role and preferred languages</p>
+
+    <!-- Role Selection -->
+    <div class="role-buttons">
+      <button id="studentBtn" onclick="selectRole('student')">Student</button>
+      <button id="teacherBtn" onclick="selectRole('teacher')">Teacher</button>
+    </div>
+
+    <!-- Language Selection -->
+    <div class="languages">
+      <h3>Select Languages:</h3>
+      <label><input type="checkbox" value="Hindi"> Hindi</label>
+      <label><input type="checkbox" value="English"> English</label>
+      <label><input type="checkbox" value="Punjabi"> Punjabi</label>
+      <label><input type="checkbox" value="Urdu"> Urdu</label>
+      <label><input type="checkbox" value="Kannada"> Kannada</label>
+      <label><input type="checkbox" value="Telugu"> Telugu</label>
+      <label><input type="checkbox" value="Tamil"> Tamil</label>
+      <label><input type="checkbox" value="Malayalam"> Malayalam</label>
+    </div>
+
+    <!-- Continue Button -->
+    <button id="continueBtn" class="continue-btn" disabled>Continue</button>
+  </div>
+
+  <script>
+    let selectedRole = null;
+
+    function selectRole(role) {
+      selectedRole = role;
+      document.getElementById("continueBtn").disabled = false;
+
+      // Toggle active class
+      document.getElementById("studentBtn").classList.remove("active", "student");
+      document.getElementById("teacherBtn").classList.remove("active", "teacher");
+
+      if (role === "student") {
+        document.getElementById("studentBtn").classList.add("active", "student");
+      } else {
+        document.getElementById("teacherBtn").classList.add("active", "teacher");
+      }
+    }
+
+    document.getElementById("continueBtn").addEventListener("click", () => {
+      if (selectedRole === "student") {
+        window.location.href = "student.html";
+      } else if (selectedRole === "teacher") {
+        window.location.href = "teacher.html";
+      }
+    });
+  </script>
+</body>
+</html>
